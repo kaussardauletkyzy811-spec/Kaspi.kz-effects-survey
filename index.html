@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Redirect</title>
+  <script>
+    const forms = [
+      "https://forms.gle/AToNzFBm5nhqLYa6A", // Group A
+      "https://forms.gle/VTfrXpjubVDQ7gB2A", // Group B
+      "https://forms.gle/hE6ucAMQfGc1cQWZ7"  // Group C
+    ];
+
+    let assignedUrl = localStorage.getItem("kaspi_survey_group");
+    if (!assignedUrl || !forms.includes(assignedUrl)) {
+      const randomIndex = Math.floor(Math.random() * forms.length);
+      assignedUrl = forms[randomIndex];
+      localStorage.setItem("kaspi_survey_group", assignedUrl);
+    }
+
+    window.location.replace(assignedUrl);
+  </script>
+</head>
+<body>
+  <p>Redirecting to the survey...</p>
+</body>
+</html>
